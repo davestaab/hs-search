@@ -47,7 +47,6 @@ export default {
     standard() {
       return this.cards
         ? this.cards.filter(c => {
-            console.log("c", c);
             return standardSets.indexOf(c.set) >= 0;
           })
         : [];
