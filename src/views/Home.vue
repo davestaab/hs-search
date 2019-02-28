@@ -13,6 +13,13 @@ export default {
   name: "home",
   components: {
     HelloWorld
+  },
+  mounted() {
+    import(/* webpackChunkName: "data" */ "../assets/cards.collectible.json").then(
+      module => {
+        this.data = module.default;
+      }
+    );
   }
 };
 </script>
