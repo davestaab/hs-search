@@ -10,8 +10,12 @@ export default new Router({
     {
       path: "/",
       name: "cards",
+      component: () => import(/* webpackChunkName: "cards" */ "./views/Cards")
+    },
+    {
+      path: "/deck/:deckCode",
       component: () =>
-        import(/* webpackChunkName: "cards" */ "./views/Cards.vue")
+        import(/* webpackChunkName: "deckViewer" */ "./views/DeckViewer")
     }
   ]
 });

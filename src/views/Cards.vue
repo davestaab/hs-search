@@ -1,14 +1,16 @@
 <template>
   <div>
     <h1>Cards</h1>
+    <!--<card :card-data="demoCard" v-if="demoCard"></card>-->
     <input v-model="query" placeholder="Search" />
     {{ standard.length }}
-    {{ foundCards }}
+    <!--{{ foundCards }}-->
     <img v-for="u in imageUrls" :key="u" :src="u" />
   </div>
 </template>
 
 <script>
+// const IMAGE_PREFIX = process.env.production
 const KFT = "ICECROWN",
   KNC = "LOOTAPALOOZA",
   UNGORO = "UNGORO",
@@ -51,6 +53,9 @@ export default {
           })
         : [];
     },
+    demoCard() {
+      return this.standard.find(c => c.dbfId === 8);
+    },
     foundCards() {
       return this.query
         ? this.standard.filter(c => {
@@ -59,13 +64,14 @@ export default {
         : [];
     },
     imageUrls() {
-      return this.foundCards.map(c => `cards/${c.dbfId}.png`);
+      return this.foundCards.map(c => `/cards/${c.dbfId}.png`);
     }
   },
   watch: {
     // query(newVal) {}
   },
-  methods: {}
+  methods: {},
+  components: {}
 };
 </script>
 
